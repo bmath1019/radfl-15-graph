@@ -1,0 +1,104 @@
+body{
+	background-color: #F4EFD9
+}
+
+.section {
+  padding: 1em 0;
+}
+
+.header {
+  background: linear-gradient(to bottom, #194375 0%, #264875 100%);
+  color: #DCDDD8;
+  padding: 1em;
+}
+
+.footer {
+  background: linear-gradient(to bottom, #194375 100%, #264875 0%);
+  color: #DCDDD8;
+  padding: 1em;
+}
+
+.head{
+	font-weight: bold;
+}
+
+#chart svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.dg{
+	stroke: #FF7F0E;
+	fill: none;
+	stroke-width: 4;
+}
+
+.sj{
+	stroke: #FFBB78;
+	fill: none;
+	stroke-width: 4;
+}
+
+.jb{
+	stroke: #7F7F7F;
+	fill: none;
+	stroke-width: 4;
+}
+
+.bm{
+	stroke: #2CA02C;
+	fill: none;
+	stroke-width: 4;
+}
+
+.ra{
+	stroke: #D62728;
+	fill: none;
+	stroke-width: 4;
+}
+
+.bh{
+	stroke: #1F77B4;
+	fill: none;
+	stroke-width: 4;
+}
+
+.jg{
+	stroke: #8C564B;
+	fill: none;
+	stroke-width: 4;
+}
+
+.dm{
+	stroke: #AEC7E8;
+	fill: none;
+	stroke-width: 4;
+}
+
+.ps{
+	stroke: #FF9896;
+	fill: none;
+	stroke-width: 4;
+}
+
+.ja{
+	stroke: #98DF8A;
+	fill: none;
+	stroke-width: 4;
+}
+
+.rf{
+	stroke: #BCBD22;
+	fill: none;
+	stroke-width: 4;
+}
+
+.sp{
+	stroke: #E377C2;
+	fill: none;
+	stroke-width: 4;
+}
+
+.y.axis .domain {
+    display: none;
+}
