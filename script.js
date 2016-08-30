@@ -1,4 +1,4 @@
-  // cd Desktop/Fantasy-Football/2016/Graph-2015
+  // cd /Users/BradMatheson/Desktop/Fantasy-Football/2016/radfl-15-graph
 
   
   var data = [];
@@ -10,10 +10,12 @@
 d3.queue()
   .defer(d3.json, 'data/data.json')
   .defer(d3.json, 'data/data1.json')
+  .defer(d3.json, 'data/data2.json')
   .awaitAll(function (error, results) {
     if (error) { throw error; }
     dataStand = results[0];
     dataWins = results[1];
+    dataScore = results[2];
 
     var charts = [
       new Chart('#chart')
@@ -28,8 +30,8 @@ function Chart(selector) {
     var chart = this;
 
 
-  margin = { top: 20, right: 60, bottom: 45, left:45 };
-  chart.width = 1000 - margin.right -  margin.left;
+  margin = { top: 20, right: 60, bottom: 45, left:60 };
+  chart.width = 800 - margin.right -  margin.left;
   chart.height = 600 - margin.top - margin.bottom;
 
     // SVG
@@ -97,6 +99,69 @@ function Chart(selector) {
   pathRF = chart.svg.append("path");
   pathSP = chart.svg.append("path");
   pathDG = chart.svg.append("path");
+
+  chart2.svg = d3.select("#chart2")
+    .append('svg')
+    .attr('width',chart.width + margin.right + margin.left)
+    .attr('height',chart.height + margin.top + margin.bottom)
+    .append('g')
+    .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+  chart2.x = d3.scaleLinear()
+    .domain([d3.min(dataScore,function (d) {return d.score;}),d3.max(dataScore,function (d) {return d.score;})])
+    .range([margin.left,chart.width])
+    .nice();
+
+  chart2.y = d3.scaleLinear()
+    .domain([d3.min(dataScore,function (d) {return d.opp_score;}),d3.max(dataScore,function (d) {return d.opp_score;})])
+    .range([(chart.height-margin.top),0])
+    .nice();
+
+  // AXES
+
+  var xAxis2 = d3.axisBottom()
+    .scale(chart2.x);
+
+  var yAxis2 = d3.axisLeft()
+    .scale(chart2.y);
+
+  chart2.svg.append('g')
+    .attr('class', 'x axis')
+    .attr('transform', 'translate(0,' + chart.height + ')')
+    .call(xAxis2)
+    .append('text')
+    .attr('y', 30)
+    .attr('x', chart.width/2)
+    .style('text-anchor', 'end')
+    .style('fill', '#000')
+    .style('font-weight', 'bold')
+    .text('SCORE');
+
+  chart2.svg.append('g')
+    .attr('class', 'y axis')
+    .call(yAxis2)
+    .append('text')
+    .attr('transform', 'rotate(-90)')
+    .attr('y', -65)
+    .attr('x', 0)
+    .style('text-anchor', 'end')
+    .style('fill', '#000')
+    .style('font-weight', 'bold')
+    .text("OPPONENT SCORE");
+
+  points = chart2.svg.selectAll("circle")
+    .data(dataScore, function (d) {return d.can_id});
+
+  points
+    .enter()
+    .append('circle')
+    .attr('class',function (d) {return d.name_id})
+    .attr('cx', function (d) {return chart2.x(d.score); })
+    .attr('cy', function (d) {return chart2.y(d.opp_score); })
+    .attr('r',"3");
+
+
+
 
 chart.update();
 
