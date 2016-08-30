@@ -31,8 +31,8 @@ function Chart(selector) {
 
 
   margin = { top: 20, right: 60, bottom: 45, left:60 };
-  chart.width = 800 - margin.right -  margin.left;
-  chart.height = 600 - margin.top - margin.bottom;
+  chart.width = 600 - margin.right -  margin.left;
+  chart.height = 400 - margin.top - margin.bottom;
 
     // SVG
 
@@ -72,19 +72,19 @@ function Chart(selector) {
       .style('text-anchor', 'end')
       .style('fill', '#000')
       .style('font-weight', 'bold')
-      .text('Week');
+      .text('WEEK');
 
     chart.svg.append('g')
       .attr('class', 'y axis')
       .call(yAxis)
       .append('text')
       .attr('transform', 'rotate(-90)')
-      .attr('y', -65)
+      .attr('y', -30)
       .attr('x', 0)
       .style('text-anchor', 'end')
       .style('fill', '#000')
       .style('font-weight', 'bold')
-      .text("RANK");
+      .text("STANDING");
 
 
   pathSJ = chart.svg.append("path");
@@ -125,6 +125,8 @@ function Chart(selector) {
   var yAxis2 = d3.axisLeft()
     .scale(chart2.y);
 
+// Scatterplot
+
   chart2.svg.append('g')
     .attr('class', 'x axis')
     .attr('transform', 'translate(0,' + chart.height + ')')
@@ -142,7 +144,7 @@ function Chart(selector) {
     .call(yAxis2)
     .append('text')
     .attr('transform', 'rotate(-90)')
-    .attr('y', -65)
+    .attr('y', -30)
     .attr('x', 0)
     .style('text-anchor', 'end')
     .style('fill', '#000')
@@ -150,18 +152,26 @@ function Chart(selector) {
     .text("OPPONENT SCORE");
 
   points = chart2.svg.selectAll("circle")
-    .data(dataScore, function (d) {return d.can_id});
+    .data(dataScore, function (d) {return d.can_id; });
 
   points
     .enter()
     .append('circle')
-    .attr('class',function (d) {return d.name_id})
+    .attr('class',function (d) {return d.name_id + "point";})
     .attr('cx', function (d) {return chart2.x(d.score); })
     .attr('cy', function (d) {return chart2.y(d.opp_score); })
-    .attr('r',"3");
+    .attr('r',"4");
 
+  // lineWL = d3.line()
+  //   .x(chart.x(0))
+  //   .y(chart.y(200));
 
-
+  chart2.svg.append("line")
+    .style("stroke","black")
+    .attr("x1",chart2.x(0))
+    .attr("y1",chart2.y(0))
+    .attr("x2",chart2.x(200))
+    .attr("y2",chart2.y(200))
 
 chart.update();
 
@@ -233,51 +243,51 @@ chart.update();
       .y(function (d) { return chart.y(d.Sari); })
 
     pathSJ.datum(dataStand)
-      .attr('class','sj')
+      .attr('class','sjline')
       .attr('d',lineSJ);
 
     pathDG.datum(dataStand)
-      .attr('class','dg')
+      .attr('class','dgline')
       .attr('d',lineDG);
 
     pathJB.datum(dataStand)
-      .attr('class','jb')
+      .attr('class','jbline')
       .attr('d',lineJB);
 
     pathBM.datum(dataStand)
-      .attr('class','bm')
+      .attr('class','bmline')
       .attr('d',lineBM);
 
     pathRA.datum(dataStand)
-      .attr('class','ra')
+      .attr('class','raline')
       .attr('d',lineRA);
 
     pathBH.datum(dataStand)
-      .attr('class','bh')
+      .attr('class','bhline')
       .attr('d',lineBH);
 
     pathJG.datum(dataStand)
-      .attr('class','jg')
+      .attr('class','jgline')
       .attr('d',lineJG);
 
     pathDM.datum(dataStand)
-      .attr('class','dm')
+      .attr('class','dmline')
       .attr('d',lineDM);
 
     pathPS.datum(dataStand)
-      .attr('class','ps')
+      .attr('class','psline')
       .attr('d',linePS);
 
     pathJA.datum(dataStand)
-      .attr('class','ja')
+      .attr('class','jaline')
       .attr('d',lineJA);
 
     pathRF.datum(dataStand)
-      .attr('class','rf')
+      .attr('class','rfline')
       .attr('d',lineRF);
 
     pathSP.datum(dataStand)
-      .attr('class','sp')
+      .attr('class','spline')
       .attr('d',lineSP);
 
   };

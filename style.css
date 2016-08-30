@@ -18,6 +18,15 @@ body{
   padding: 1em;
 }
 
+#chart{
+	position:relative
+
+}
+
+#chart2{
+	position:relative
+}
+
 .head{
 	font-weight: bold;
 }
@@ -27,76 +36,141 @@ body{
   margin: 0 auto;
 }
 
-.dg{
+.line{
+	fill: none;
+	stroke-width: 5;
+}
+
+.dgline{
 	stroke: #FF7F0E;
 	fill: none;
-	stroke-width: 4;
+	stroke-width: 5;
 }
 
-.sj{
+.dgpoint{
+	stroke: #FF7F0E;
+	fill: #FF7F0E;
+}
+
+.sjline{
 	stroke: #FFBB78;
 	fill: none;
-	stroke-width: 4;
+	stroke-width: 5;
 }
 
-.jb{
+.sjpoint{
+	stroke: #FFBB78;
+	fill: #FFBB78;
+}
+
+.jbline{
 	stroke: #7F7F7F;
 	fill: none;
-	stroke-width: 4;
+	stroke-width: 5;
 }
 
-.bm{
+.jbpoint{
+	stroke: #7F7F7F;
+	fill: #7F7F7F;
+}
+
+.bmline{
 	stroke: #2CA02C;
 	fill: none;
-	stroke-width: 4;
+	stroke-width: 5;
 }
 
-.ra{
+.bmpoint{
+	stroke: #2CA02C;
+	fill: #2CA02C;
+}
+
+.raline{
 	stroke: #D62728;
 	fill: none;
-	stroke-width: 4;
+	stroke-width: 5;
 }
 
-.bh{
+.rapoint{
+	stroke: #D62728;
+	fill: #D62728;
+}
+
+.bhline{
 	stroke: #1F77B4;
 	fill: none;
-	stroke-width: 4;
+	stroke-width: 5;
 }
 
-.jg{
+.bhpoint{
+	stroke: #1F77B4;
+	fill: #1F77B4;
+}
+
+.jgline{
 	stroke: #8C564B;
 	fill: none;
-	stroke-width: 4;
+	stroke-width: 5;
 }
 
-.dm{
+.jgpoint{
+	stroke: #8C564B;
+	fill: #8C564B;
+}
+
+.dmline{
 	stroke: #AEC7E8;
 	fill: none;
-	stroke-width: 4;
+	stroke-width: 5;
 }
 
-.ps{
+.dmpoint{
+	stroke: #AEC7E8;
+	fill: #AEC7E8;
+}
+
+.psline{
 	stroke: #FF9896;
 	fill: none;
-	stroke-width: 4;
+	stroke-width: 5;
 }
 
-.ja{
+.pspoint{
+	stroke: #FF9896;
+	fill: #FF9896;
+}
+
+.jaline{
 	stroke: #98DF8A;
 	fill: none;
-	stroke-width: 4;
+	stroke-width: 5;
 }
 
-.rf{
+.japoint{
+	stroke: #98DF8A;
+	fill: #98DF8A;
+}
+
+.rfline{
 	stroke: #BCBD22;
 	fill: none;
-	stroke-width: 4;
+	stroke-width: 5;
 }
 
-.sp{
+.rfpoint{
+	stroke: #BCBD22;
+	fill: #BCBD22;
+}
+
+.spline{
 	stroke: #E377C2;
 	fill: none;
-	stroke-width: 4;
+	stroke-width: 5;
+}
+
+.sppoint{
+	stroke: #E377C2;
+	fill: #E377C2;
 }
 
 .y.axis .domain {
